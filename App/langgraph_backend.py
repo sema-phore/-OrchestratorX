@@ -36,7 +36,7 @@ from sqlite_functions import conn
 # LLMs
 # ─────────────────────────────────────────────────────────────
 llm = ChatOpenAI(model="gpt-4o-mini")
-blog_llm = ChatOpenAI(model="gpt-4.1-mini")
+blog_llm = ChatOpenAI(model="gpt-4o-mini")
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -217,7 +217,7 @@ def blog_router_node(state: BlogState) -> dict:
         queries = [
             topic,
             f"{topic} tutorial guide",
-            f"{topic} best practices 2024",
+            f"{topic} best practices 2026",
             f"{topic} examples use cases",
             f"{topic} comparison alternatives",
         ]
@@ -279,7 +279,7 @@ def rag_retrieval_node(state: BlogState) -> dict:
 
 # ── Research (Tavily) ────────────────────────────────────────
 
-def _tavily_search(query: str, max_results: int = 5) -> List[dict]:
+def _tavily_search(query: str, max_results: int = 10) -> List[dict]:
     """Matches friend's exact working implementation."""
     from langchain_community.tools import TavilySearchResults
     tool = TavilySearchResults(max_results=max_results)
@@ -314,7 +314,7 @@ Only include items with non-empty URLs. Prefer authoritative sources.
 def blog_research_node(state: BlogState) -> dict:
     """Matches friend's exact working implementation — no date filtering that kills results."""
     queries = (state.get("queries") or [])[:10]
-    max_results = 6
+    max_results = 10
 
     raw_results: List[dict] = []
     for q in queries:
