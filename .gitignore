@@ -1,0 +1,30 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+*.pyc
+
+
+# Virtual environments
+.venv
+venv/
+# Environment
+.env
+
+# Database & Vector Store
+chatbot.db
+chatbot_chroma/
+chatbot.db-shm
+chatbot.db-wal
+
+
+# Generated content
+generated_blogs/
+images/
+
+# LangSmith / OS
+.langgraph_api
+.DS_Store
